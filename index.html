@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dithakga Events</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dithakga Events</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
 
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
+    #cover-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40px; /* adjust this height to cover the banner */
+        background-color: white; /* or your page background color */
+        z-index: 9999;
+        pointer-events: none; /* so clicks pass through */
+    }
 
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: none;
-        }
-    </style>
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        border: none;
+    }
+</style>
 </head>
 <body>
-
+    <div id="cover-bar"></div>
     <iframe
-        src="https://silly-elm-333.notion.site/ebd//2dba434ef3f2808cbbeed01cdf93e82a">
-    </iframe>
-
+        src="https://silly-elm-333.notion.site/ebd//2dba434ef3f2808cbbeed01cdf93e82a"
+        allowfullscreen
+        sandbox="allow-scripts allow-same-origin"
+    ></iframe>
 </body>
 </html>
