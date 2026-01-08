@@ -3,46 +3,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dithakga Events with Top-Right Banner</title>
+  <title>Dithakga Events Portal</title>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
+
+    /* LOGIN SCREEN */
+    #login {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f2f2f2;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* CONTENT */
+    #content {
+      display: none;
+    }
+
     iframe {
       position: fixed;
-      top: 0; left: 0;
+      top: 0; 
+      left: 0;
       width: 100%;
       height: 100vh;
       border: none;
       z-index: 1;
     }
+
+    /* TOP RIGHT BANNER */
     #banner {
       position: fixed;
       top: 0;
       right: 0;
-      height: 40px;        /* Banner height */
-      width: 170;         /* Width adjusts to image */
-      max-width: 170px;    /* Max width if you want */
+      height: 40px;
+      max-width: 170px;
       z-index: 9999;
     }
+
     #banner img {
       height: 100%;
       width: auto;
       display: block;
       object-fit: contain;
     }
+
+    /* LOGOUT BUTTON */
+    #logout {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- PROTECTED CONTENT -->
+<div id="content">
+  <button id="logout" onclick="logout()">Logout</button>
+
   <iframe src="https://silly-elm-333.notion.site/ebd//2dba434ef3f2808cbbeed01cdf93e82a"></iframe>
 
   <div id="banner">
-    <img src="https://raw.githubusercontent.com/OkieCodeDemos/NotioTest/main/banner.jpg" alt="Top Right Banner" />
+    <img src="https://raw.githubusercontent.com/OkieCodeDemos/NotioTest/main/banner.jpg" alt="Top Right Banner">
   </div>
+</div>
+
+<script>
+  // 🔥 Your Firebase config (THIS PART IS CORRECT)
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCrlnx5dX6TwuAMvb8bFVlcZxsaDh2nVE",
+    authDomain: "dithakga-portal.firebaseapp.com",
+    projectId: "dithakga-portal",
+    storageBucket: "dithakga-portal.firebasestorage.app",
+    messagingSenderId: "252507781298",
+    appId: "1:252507781298:web:1c4a024543c92b5f87b1ab"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // AUTH STATE
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    } else {
+      document.getElementById('login').style.display = 'flex';
+      document.getElementById('content').style.display = 'none';
+    }
+  });
+
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    auth.signInWithEmailAndPassword(email, password)
+      .catch(err => alert(err.message));
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+</script>
 
 </body>
 </html>
