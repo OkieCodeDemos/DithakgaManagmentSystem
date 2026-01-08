@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dithakga Events with Top-Right Banner (Blocking Clicks)</title>
+  <title>Dithakga Events with Top-Right Banner</title>
   <style>
     html, body {
       margin: 0;
@@ -23,12 +23,11 @@
       position: fixed;
       top: 0;
       right: 0;
-      height: 40px;
-      width: 170;
-      max-width: 170px;
+      height: 60px;        /* Banner height */
+      width: auto;         /* Width adjusts to image */
+      max-width: 300px;    /* Max width if you want */
       z-index: 9999;
-      /* pointer-events: none; */ /* This line removed so clicks are captured */
-      background: transparent; /* Optional: you can add bg color if needed */
+      pointer-events: none; /* So clicks go through */
     }
     #banner img {
       height: 100%;
