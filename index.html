@@ -162,13 +162,13 @@
         .catch(err => alert(err.message));
     }
 
-    // Logout function
+    // Logout function (kept for later)
     document.getElementById("logout").onclick = () => {
       auth.signOut();
     };
 
     // Prevent window.open from working
-    window.open = function() {
+    window.open = function () {
       return null;
     };
 
@@ -181,7 +181,7 @@
     // Disable right-click context menu
     document.addEventListener("contextmenu", e => e.preventDefault());
 
-    // Disable Ctrl+T, Ctrl+N, Ctrl+W shortcuts (new tab, new window, close tab)
+    // Disable Ctrl+T, Ctrl+N, Ctrl+W shortcuts
     document.addEventListener("keydown", e => {
       if (e.ctrlKey) {
         const blockedKeys = ["t", "n", "w"];
