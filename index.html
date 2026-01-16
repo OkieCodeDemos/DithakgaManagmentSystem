@@ -6,7 +6,8 @@
   <title>Dithakga Events Portal</title>
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -16,18 +17,15 @@
     /* Hide iframe until logged in */
     #content {
       display: none;
-      /* Make it scrollable */
-      height: 100vh;
-      overflow-y: auto;
     }
 
     iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 900px;
-      height: 500px;
+      height: 100vh;
       border: none;
-      display: block;
-      margin: 10px auto;
       z-index: 1;
     }
 
@@ -45,7 +43,7 @@
       padding: 24px;
       border-radius: 8px;
       width: 280px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     #login-box h2 {
@@ -68,7 +66,7 @@
       cursor: pointer;
     }
 
-    /* Logout button */
+    /* Logout button (kept for later use) */
     #logout {
       position: fixed;
       top: 0;
