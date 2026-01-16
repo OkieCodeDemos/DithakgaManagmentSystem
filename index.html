@@ -16,15 +16,19 @@
     /* Hide iframe until logged in */
     #content {
       display: none;
+      /* Make it scrollable since there are now two iframes vertically */
+      height: 100vh;
+      overflow-y: auto;
     }
 
+    /* Remove fixed positioning, let iframes stack */
     iframe {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100vh;
+      max-width: 900px; /* match your new iframe width */
+      height: 500px;
       border: none;
+      display: block;
+      margin: 10px auto; /* center horizontally and add vertical spacing */
       z-index: 1;
     }
 
@@ -113,6 +117,15 @@
     <iframe
       src="https://silly-elm-333.notion.site/ebd//2dba434ef3f2808cbbeed01cdf93e82a"
       sandbox="allow-scripts allow-same-origin">
+    </iframe>
+
+    <!-- New iframe added below -->
+    <iframe 
+      src="https://coda.io/embed/Decy9oBOCg/_suuCTXbG?hideSections=true" 
+      width="900" 
+      height="500" 
+      style="max-width: 100%;" 
+      allow="fullscreen">
     </iframe>
 
     <button id="logout">Logout</button>
